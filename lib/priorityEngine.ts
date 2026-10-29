@@ -49,7 +49,9 @@ export function calculateDefectPriority(input: PriorityAssessmentInput): Priorit
 
   // 2. Defect Severity Score (0 - 35) based on depth & diameter
   let severityScore = 0;
-  if (depth >= 15 || width >= 80) {
+  if (depth === 0 && width === 0) {
+    severityScore = 0;
+  } else if (depth >= 15 || width >= 80) {
     severityScore = 35;
   } else if (depth >= 10 || width >= 50) {
     severityScore = 28;
@@ -79,7 +81,12 @@ export function calculateDefectPriority(input: PriorityAssessmentInput): Priorit
   let borderColor = 'border-amber-500';
   let slaHours = 72;
 
-  if (totalScore >= 78) {
+  if (depth === 0 && width === 0) {
+    level = 'LOW';
+    badgeColor = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+    borderColor = 'border-emerald-500';
+    slaHours = 168;
+  } else if (totalScore >= 78) {
     level = 'CRITICAL';
     badgeColor = 'bg-rose-500/20 text-rose-400 border-rose-500/30';
     borderColor = 'border-rose-500';
@@ -112,7 +119,9 @@ export function calculateDefectPriority(input: PriorityAssessmentInput): Priorit
   const org = input.organisationName || 'Managing Authority';
 
   let recommendedAction = '';
-  if (contractorLiability === 'DIRECT_LIABILITY') {
+  if (depth === 0 && width === 0) {
+    recommendedAction = `Road pavement condition verified. No active pothole hazards detected. Continue routine inspection schedule.`;
+  } else if (contractorLiability === 'DIRECT_LIABILITY') {
     recommendedAction = `Issue urgent ${slaHours}h defect rectification notice to contractor "${contractor}" under active ${org} tender. Defect falls directly within operational contract scope.`;
   } else if (contractorLiability === 'PENDING_CONTRACT') {
     recommendedAction = `Forward pothole coordinates to ${org} Engineering Wing to add mandatory defect repair patch to pending tender contract prior to bid closing.`;
