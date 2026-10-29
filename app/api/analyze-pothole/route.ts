@@ -4,7 +4,13 @@ import { getAllTenders, saveReport, DefectReport } from '@/lib/db';
 import { matchPotholeToTender } from '@/lib/tenderMatcher';
 import { crawlETenders } from '@/lib/crawler';
 import { calculateDefectPriority } from '@/lib/priorityEngine';
-import { analyzePotholesAndSurface, reverseGeocodeLocation } from '@/lib/potholeDetector';
+import {
+  analyzePotholesAndSurface,
+  detectPotholesFromPixels,
+  reverseGeocodeLocation,
+  PavementDiagnostics,
+} from '@/lib/potholeDetector';
+import { classifyRoadImageFromPixels, INVALID_ROAD_MESSAGE } from '@/lib/roadClassifier';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,6 +25,7 @@ export async function POST(req: NextRequest) {
     let defectWidthCm = 40;
     let imageName = 'uploaded_image.jpg';
     let exifInfo: any = null;
+    let potholeDiagnostics: PavementDiagnostics | null = null;
 
     let isRoadValid = true;
 
@@ -30,6 +37,15 @@ export async function POST(req: NextRequest) {
       const isRoadValidParam = formData.get('isRoadValid') as string | null;
       if (isRoadValidParam === 'false') {
         isRoadValid = false;
+      }
+
+      const clientDiagnosticsStr = formData.get('potholeDiagnostics') as string | null;
+      if (clientDiagnosticsStr) {
+        try {
+          potholeDiagnostics = JSON.parse(clientDiagnosticsStr);
+        } catch (e) {
+          console.warn('Could not parse client pothole diagnostics:', e);
+        }
       }
 
       userNotes = (formData.get('userNotes') as string) || '';
@@ -45,6 +61,34 @@ export async function POST(req: NextRequest) {
           if (exifInfo.hasGps && exifInfo.latitude !== null && exifInfo.longitude !== null) {
             latitude = exifInfo.latitude;
             longitude = exifInfo.longitude;
+          }
+
+          // If client didn't supply potholeDiagnostics, run server-side CV analysis with sharp
+          if (!potholeDiagnostics) {
+            try {
+              const buffer = Buffer.from(arrayBuffer);
+              const sharp = (await import('sharp')).default;
+              const { data, info } = await sharp(buffer)
+                .resize(256, 256, { fit: 'inside' })
+                .ensureAlpha()
+                .raw()
+                .toBuffer({ resolveWithObject: true });
+
+              const classification = classifyRoadImageFromPixels(data, info.width, info.height);
+              if (!classification.isRoad) {
+                isRoadValid = false;
+              } else {
+                potholeDiagnostics = detectPotholesFromPixels(
+                  data,
+                  info.width,
+                  info.height,
+                  latitude || 26.8468,
+                  longitude || 81.0105
+                );
+              }
+            } catch (sharpErr) {
+              console.warn('Server sharp pixel analysis failed, fallback:', sharpErr);
+            }
           }
         } catch (exifErr) {
           console.warn('Could not read EXIF data:', exifErr);
@@ -79,6 +123,9 @@ export async function POST(req: NextRequest) {
       if (body.isRoadValid === false) {
         isRoadValid = false;
       }
+      if (body.potholeDiagnostics) {
+        potholeDiagnostics = body.potholeDiagnostics;
+      }
     }
 
     // Check road recognition validation
@@ -86,8 +133,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error: 'Unrecognized Road Image',
-          message:
-            'This is not a recognized image of a road. Please upload the proper image of the road potholes only, so that it can be detected and tenders can be seen',
+          message: INVALID_ROAD_MESSAGE,
         },
         { status: 400 }
       );
@@ -140,21 +186,27 @@ export async function POST(req: NextRequest) {
 
     matchResult.dataSource = dataSource;
 
-    // 3. Deep Computer Vision Pothole Diagnostics & Surface Severity
-    const potholeDiagnostics = analyzePotholesAndSurface(
-      latitude,
-      longitude,
-      defectDepthCm,
-      defectWidthCm
-    );
+    // 3. Computer Vision Pothole Diagnostics & Surface Severity
+    if (!potholeDiagnostics) {
+      potholeDiagnostics = analyzePotholesAndSurface(
+        latitude,
+        longitude,
+        defectDepthCm,
+        defectWidthCm
+      );
+    }
 
     // 4. Reverse Geocode GPS to Exact Lucknow Road & Ward
     const geocodedLocation = reverseGeocodeLocation(latitude, longitude);
 
     // 5. Perform Priority Assessment
     const primaryPothole = potholeDiagnostics.detectedPotholes[0];
-    const effectiveDepth = primaryPothole ? primaryPothole.estimatedDepthCm : defectDepthCm;
-    const effectiveWidth = primaryPothole ? primaryPothole.estimatedWidthCm : defectWidthCm;
+    const effectiveDepth = primaryPothole
+      ? primaryPothole.estimatedDepthCm
+      : (potholeDiagnostics.potholeCount === 0 ? 0 : defectDepthCm);
+    const effectiveWidth = primaryPothole
+      ? primaryPothole.estimatedWidthCm
+      : (potholeDiagnostics.potholeCount === 0 ? 0 : defectWidthCm);
 
     const priorityAssessment = calculateDefectPriority({
       roadType: matchResult.matchedTender?.road_type,
