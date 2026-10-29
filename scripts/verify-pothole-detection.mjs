@@ -158,3 +158,4 @@ console.log('====================================================');
 function totalPixels(w, h) {
   return w * h;
 }
+

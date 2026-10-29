@@ -629,8 +629,8 @@ export default function MobileRoadCapture() {
                 gpsStatus === 'locked'
                   ? `Live GPS Active (${lat}°N, ${lng}°E). Click to refresh.`
                   : gpsStatus === 'locating'
-                  ? 'Acquiring high-accuracy GPS coordinates...'
-                  : 'Auto-detect device GPS coordinates'
+                    ? 'Acquiring high-accuracy GPS coordinates...'
+                    : 'Auto-detect device GPS coordinates'
               }
             >
               {gpsStatus === 'locating' ? (
@@ -688,19 +688,17 @@ export default function MobileRoadCapture() {
                       <div
                         key={pothole.id}
                         style={{ top, left, width, height }}
-                        className={`absolute border-2 rounded-lg transition-all ${
-                          isCritical
-                            ? 'border-rose-500 bg-rose-500/10 shadow-[0_0_12px_rgba(244,63,94,0.5)]'
-                            : isHigh
+                        className={`absolute border-2 rounded-lg transition-all ${isCritical
+                          ? 'border-rose-500 bg-rose-500/10 shadow-[0_0_12px_rgba(244,63,94,0.5)]'
+                          : isHigh
                             ? 'border-amber-400 bg-amber-400/10 shadow-[0_0_12px_rgba(251,191,36,0.4)]'
                             : 'border-white bg-white/10'
-                        }`}
+                          }`}
                       >
                         <div className="absolute -top-6 left-0 flex items-center gap-1 bg-black/90 px-2 py-0.5 rounded text-[10px] font-mono font-bold text-white border border-zinc-700 whitespace-nowrap shadow-md">
                           <span
-                            className={`w-1.5 h-1.5 rounded-full ${
-                              isCritical ? 'bg-rose-500 animate-ping' : 'bg-amber-400'
-                            }`}
+                            className={`w-1.5 h-1.5 rounded-full ${isCritical ? 'bg-rose-500 animate-ping' : 'bg-amber-400'
+                              }`}
                           />
                           <span>#{idx + 1} Pothole ({pothole.confidence}%)</span>
                         </div>
@@ -888,8 +886,8 @@ export default function MobileRoadCapture() {
                     {selectedPreset.complaintCount >= 3
                       ? '🚨 Notice Issued'
                       : selectedPreset.complaintCount > 0
-                      ? `⚡ ${selectedPreset.complaintCount}/3 Complaints`
-                      : '0 Complaints'}
+                        ? `⚡ ${selectedPreset.complaintCount}/3 Complaints`
+                        : '0 Complaints'}
                   </span>
                   <span className="text-[10px] font-mono bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 px-2 py-0.5 rounded-md border border-zinc-200 dark:border-zinc-800">
                     {selectedPreset.roadType}
