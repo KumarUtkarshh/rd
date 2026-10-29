@@ -533,19 +533,19 @@ export default function MobileRoadCapture() {
       />
 
       {/* MAIN CARD */}
-      <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-6">
+      <div className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-5 sm:p-7 shadow-sm dark:shadow-2xl space-y-6 transition-colors duration-150">
         {/* Top Status & GPS Bar */}
-        <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+        <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 border-b border-zinc-200 dark:border-zinc-800/80 pb-4">
           <div className="flex items-center gap-2 shrink-0">
-            <span className="h-2.5 w-2.5 rounded-full bg-white animate-pulse"></span>
-            <span className="text-xs font-mono font-bold text-zinc-200 tracking-wider uppercase">
+            <span className="h-2.5 w-2.5 rounded-full bg-blue-500 animate-pulse"></span>
+            <span className="text-xs font-mono font-bold text-zinc-900 dark:text-zinc-200 tracking-wider uppercase">
               ROAD TENDER & CONTRACTOR MATCHER
             </span>
           </div>
 
           <div className="flex items-center gap-2 shrink-0 ml-auto">
             {gpsNotice && (
-              <span className="text-[10px] font-mono text-zinc-400 animate-in fade-in hidden sm:inline">
+              <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 animate-in fade-in hidden sm:inline">
                 {gpsNotice}
               </span>
             )}
@@ -555,12 +555,12 @@ export default function MobileRoadCapture() {
               disabled={gpsStatus === 'locating'}
               className={`flex items-center justify-center gap-1.5 text-[11px] font-mono px-3.5 py-1.5 rounded-full border transition-all shrink-0 min-w-[122px] h-8 select-none ${
                 gpsStatus === 'locked'
-                  ? 'bg-emerald-950/40 hover:bg-emerald-950/70 text-emerald-300 border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.18)] cursor-pointer'
+                  ? 'bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-500/40 shadow-sm dark:shadow-[0_0_12px_rgba(16,185,129,0.18)] cursor-pointer'
                   : gpsStatus === 'locating'
-                  ? 'bg-zinc-900 text-zinc-300 border-zinc-700 cursor-wait'
+                  ? 'bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border-zinc-300 dark:border-zinc-700 cursor-wait'
                   : gpsStatus === 'denied'
-                  ? 'bg-rose-950/30 hover:bg-rose-950/50 text-rose-300 border-rose-800/40 cursor-pointer'
-                  : 'bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border-zinc-800 hover:border-zinc-700 cursor-pointer'
+                  ? 'bg-rose-50 dark:bg-rose-950/30 hover:bg-rose-100 dark:hover:bg-rose-950/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-800/40 cursor-pointer'
+                  : 'bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 cursor-pointer'
               }`}
               title={
                 gpsStatus === 'locked'
@@ -572,7 +572,7 @@ export default function MobileRoadCapture() {
             >
               {gpsStatus === 'locating' ? (
                 <>
-                  <Compass className="w-3.5 h-3.5 animate-spin text-zinc-200 shrink-0" />
+                  <Compass className="w-3.5 h-3.5 animate-spin text-zinc-600 dark:text-zinc-200 shrink-0" />
                   <span>Locating...</span>
                 </>
               ) : gpsStatus === 'locked' ? (
@@ -585,12 +585,12 @@ export default function MobileRoadCapture() {
                 </>
               ) : gpsStatus === 'denied' ? (
                 <>
-                  <AlertCircle className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                  <AlertCircle className="w-3.5 h-3.5 text-rose-500 dark:text-rose-400 shrink-0" />
                   <span>GPS Offline</span>
                 </>
               ) : (
                 <>
-                  <Compass className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+                  <Compass className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400 shrink-0" />
                   <span>Auto GPS</span>
                 </>
               )}
@@ -688,7 +688,7 @@ export default function MobileRoadCapture() {
               <button
                 type="button"
                 onClick={handleResetCapture}
-                className="text-xs font-mono text-zinc-400 hover:text-white flex items-center gap-1.5 py-1 px-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 cursor-pointer transition-all"
+                className="text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white flex items-center gap-1.5 py-1 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900/50 dark:hover:bg-zinc-900 cursor-pointer transition-all"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Capture / Upload Another Photo</span>
@@ -707,16 +707,16 @@ export default function MobileRoadCapture() {
           <label
             htmlFor="camera-capture-input"
             onClick={handleCaptureClick}
-            className="w-full bg-white hover:bg-zinc-200 text-black font-extrabold text-sm py-4 px-6 rounded-2xl shadow-lg flex items-center justify-center gap-2.5 transition-all active:scale-[0.98] cursor-pointer text-center select-none"
+            className="w-full bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-black font-extrabold text-sm py-4 px-6 rounded-2xl shadow-md dark:shadow-lg flex items-center justify-center gap-2.5 transition-all active:scale-[0.98] cursor-pointer text-center select-none"
           >
             {isAnalyzing ? (
               <>
-                <RefreshCw className="w-5 h-5 animate-spin text-black" />
+                <RefreshCw className="w-5 h-5 animate-spin text-inherit" />
                 <span>Analyzing Photo...</span>
               </>
             ) : (
               <>
-                <Camera className="w-5 h-5 text-black" />
+                <Camera className="w-5 h-5 text-inherit" />
                 <span>Capture Road Photo</span>
               </>
             )}
@@ -725,9 +725,9 @@ export default function MobileRoadCapture() {
           {/* BUTTON 2: Gallery Upload */}
           <label
             htmlFor="gallery-upload-input"
-            className="w-full bg-zinc-900 hover:bg-zinc-800 text-zinc-100 font-bold text-sm py-4 px-6 rounded-2xl border border-zinc-700 shadow-md flex items-center justify-center gap-2.5 transition-all active:scale-[0.98] cursor-pointer text-center select-none"
+            className="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:text-zinc-100 font-bold text-sm py-4 px-6 rounded-2xl border border-zinc-300 dark:border-zinc-700 shadow-sm dark:shadow-md flex items-center justify-center gap-2.5 transition-all active:scale-[0.98] cursor-pointer text-center select-none"
           >
-            <Upload className="w-5 h-5 text-zinc-300" />
+            <Upload className="w-5 h-5 text-zinc-600 dark:text-zinc-300" />
             <span>Gallery Upload</span>
           </label>
         </div>
@@ -737,20 +737,20 @@ export default function MobileRoadCapture() {
           <div
             className={`p-4 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono animate-in fade-in duration-200 ${
               errorMsg === INVALID_ROAD_MESSAGE
-                ? 'bg-amber-950/30 border-amber-500/40 text-amber-200 shadow-[0_0_15px_rgba(245,158,11,0.1)]'
-                : 'bg-zinc-900 border-zinc-700 text-zinc-200'
+                ? 'bg-amber-50 dark:bg-amber-950/30 border-amber-300 dark:border-amber-500/40 text-amber-900 dark:text-amber-200 shadow-sm dark:shadow-[0_0_15px_rgba(245,158,11,0.1)]'
+                : 'bg-zinc-100 dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-200'
             }`}
           >
             <div className="flex items-start gap-2.5">
               <AlertCircle
                 className={`w-5 h-5 shrink-0 mt-0.5 ${
-                  errorMsg === INVALID_ROAD_MESSAGE ? 'text-amber-400' : 'text-white'
+                  errorMsg === INVALID_ROAD_MESSAGE ? 'text-amber-500 dark:text-amber-400' : 'text-zinc-800 dark:text-white'
                 }`}
               />
               <div className="space-y-1">
                 <span className="font-semibold block leading-relaxed">{errorMsg}</span>
                 {errorMsg === INVALID_ROAD_MESSAGE && (
-                  <span className="text-[11px] text-zinc-400 block">
+                  <span className="text-[11px] text-zinc-600 dark:text-zinc-400 block">
                     Our AI models require asphalt pavement and visible potholes to match with civic road maintenance contracts.
                   </span>
                 )}
@@ -761,7 +761,7 @@ export default function MobileRoadCapture() {
               <button
                 type="button"
                 onClick={handleResetCapture}
-                className="self-end sm:self-center shrink-0 bg-white hover:bg-zinc-200 text-black font-bold text-[11px] px-3.5 py-1.5 rounded-xl cursor-pointer transition-all active:scale-95"
+                className="self-end sm:self-center shrink-0 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-black font-bold text-[11px] px-3.5 py-1.5 rounded-xl cursor-pointer transition-all active:scale-95"
               >
                 Try Another Photo
               </button>
@@ -770,12 +770,12 @@ export default function MobileRoadCapture() {
         )}
 
         {/* Preset Location Chips */}
-        <div className="pt-2 border-t border-zinc-800/80 space-y-2.5">
+        <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800/80 space-y-2.5">
           <div className="flex items-center justify-between">
-            <label className="text-[11px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-zinc-300" /> Selected Road Stretch:
+            <label className="text-[11px] font-mono font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-300" /> Selected Road Stretch:
             </label>
-            <span className="text-[11px] font-mono text-zinc-400 truncate max-w-[200px]">
+            <span className="text-[11px] font-mono text-zinc-700 dark:text-zinc-400 truncate max-w-[200px]">
               {selectedPresetName}
             </span>
           </div>
@@ -788,8 +788,8 @@ export default function MobileRoadCapture() {
                 onClick={() => handleSelectPreset(preset)}
                 className={`whitespace-nowrap px-3 py-1.5 rounded-xl text-[11px] font-medium transition-all shrink-0 border cursor-pointer ${
                   selectedPresetName === preset.name
-                    ? 'bg-white text-black border-white font-bold'
-                    : 'bg-black text-zinc-400 hover:text-white border-zinc-800 hover:border-zinc-700'
+                    ? 'bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-black dark:border-white font-bold shadow-sm'
+                    : 'bg-zinc-100 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 border-zinc-200 dark:bg-black dark:text-zinc-400 dark:hover:text-white dark:border-zinc-800 dark:hover:border-zinc-700'
                 }`}
               >
                 {preset.name}
@@ -799,16 +799,16 @@ export default function MobileRoadCapture() {
 
           {/* Accountable Contractor & Tender Profile Card (Shown when a stretch is selected) */}
           {selectedPreset && (
-            <div className="mt-2.5 bg-black/85 border border-zinc-800 rounded-2xl p-4 space-y-3 animate-in fade-in slide-in-from-top-1 duration-200 shadow-inner">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-800/70 pb-2.5">
+            <div className="mt-2.5 bg-zinc-50 dark:bg-black/85 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 space-y-3 animate-in fade-in slide-in-from-top-1 duration-200 shadow-xs dark:shadow-inner">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-200 dark:border-zinc-800/70 pb-2.5">
                 <div>
-                  <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <Building2 className="w-3.5 h-3.5 text-zinc-300" />
+                  <div className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <Building2 className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-300" />
                     <span>Accountable Road Contractor:</span>
                   </div>
-                  <div className="text-sm font-extrabold text-white mt-0.5 tracking-tight flex items-center gap-2">
+                  <div className="text-sm font-extrabold text-zinc-900 dark:text-white mt-0.5 tracking-tight flex items-center gap-2">
                     <span>{selectedPreset.contractorName}</span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" title="Active Civic Contractor" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" title="Active Civic Contractor" />
                   </div>
                 </div>
 
@@ -816,10 +816,10 @@ export default function MobileRoadCapture() {
                   <span
                     className={`text-[10px] font-mono px-2.5 py-1 rounded-full border ${
                       selectedPreset.complaintCount >= 3
-                        ? 'bg-rose-950/40 text-rose-300 border-rose-500/40 font-bold'
+                        ? 'bg-rose-50 text-rose-700 border-rose-300 dark:bg-rose-950/40 dark:text-rose-300 dark:border-rose-500/40 font-bold'
                         : selectedPreset.complaintCount > 0
-                        ? 'bg-amber-950/40 text-amber-300 border-amber-500/40 font-bold'
-                        : 'bg-zinc-900 text-zinc-400 border-zinc-800'
+                        ? 'bg-amber-50 text-amber-700 border-amber-300 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-500/40 font-bold'
+                        : 'bg-zinc-100 text-zinc-600 border-zinc-200 dark:bg-zinc-900 dark:text-zinc-400 dark:border-zinc-800'
                     }`}
                   >
                     {selectedPreset.complaintCount >= 3
@@ -828,7 +828,7 @@ export default function MobileRoadCapture() {
                       ? `⚡ ${selectedPreset.complaintCount}/3 Complaints`
                       : '0 Complaints'}
                   </span>
-                  <span className="text-[10px] font-mono bg-zinc-900 text-zinc-300 px-2 py-0.5 rounded-md border border-zinc-800">
+                  <span className="text-[10px] font-mono bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 px-2 py-0.5 rounded-md border border-zinc-200 dark:border-zinc-800">
                     {selectedPreset.roadType}
                   </span>
                 </div>
@@ -836,26 +836,26 @@ export default function MobileRoadCapture() {
 
               {/* Grid: Authority, Budget, Lifecycle Status */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-mono">
-                <div className="bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-800/60">
-                  <div className="text-[10px] text-zinc-400 uppercase">Civic Authority</div>
-                  <div className="text-zinc-200 font-semibold mt-0.5 truncate">{selectedPreset.agency}</div>
+                <div className="bg-white dark:bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800/60 shadow-2xs">
+                  <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase">Civic Authority</div>
+                  <div className="text-zinc-800 dark:text-zinc-200 font-semibold mt-0.5 truncate">{selectedPreset.agency}</div>
                 </div>
-                <div className="bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-800/60">
-                  <div className="text-[10px] text-zinc-400 uppercase">Contract Budget</div>
-                  <div className="text-zinc-200 font-semibold mt-0.5">{selectedPreset.budgetFormatted}</div>
+                <div className="bg-white dark:bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800/60 shadow-2xs">
+                  <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase">Contract Budget</div>
+                  <div className="text-zinc-800 dark:text-zinc-200 font-semibold mt-0.5">{selectedPreset.budgetFormatted}</div>
                 </div>
-                <div className="col-span-2 sm:col-span-1 bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-800/60">
-                  <div className="text-[10px] text-zinc-400 uppercase">Work Status</div>
-                  <div className="text-zinc-200 font-semibold mt-0.5 truncate">{selectedPreset.status}</div>
+                <div className="col-span-2 sm:col-span-1 bg-white dark:bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800/60 shadow-2xs">
+                  <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase">Work Status</div>
+                  <div className="text-zinc-800 dark:text-zinc-200 font-semibold mt-0.5 truncate">{selectedPreset.status}</div>
                 </div>
               </div>
 
               {/* Action Link to Full Tender Profile */}
-              <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400 pt-1">
+              <div className="flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 pt-1">
                 <span className="truncate max-w-[260px]">Contract ID: {selectedPreset.tenderId}</span>
                 <Link
                   href={`/tender-complaint?tenderId=${encodeURIComponent(selectedPreset.tenderId)}`}
-                  className="text-white hover:underline flex items-center gap-1 font-bold shrink-0"
+                  className="text-zinc-900 dark:text-white hover:underline flex items-center gap-1 font-bold shrink-0"
                 >
                   <span>View Contract Details & Lodge Complaint</span>
                   <ArrowRight className="w-3 h-3" />
@@ -868,16 +868,16 @@ export default function MobileRoadCapture() {
 
       {/* ANALYSIS RESULTS & CONTRACTOR ACCOUNTABILITY CARD */}
       {analysisReport && (
-        <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-6 animate-in fade-in slide-in-from-bottom-3 duration-300">
+        <div className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-5 sm:p-7 shadow-sm dark:shadow-2xl space-y-6 animate-in fade-in slide-in-from-bottom-3 duration-300 transition-colors duration-150">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
+          <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
             <div className="flex items-center gap-2">
-              <ShieldAlert className="w-5 h-5 text-white" />
-              <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
+              <ShieldAlert className="w-5 h-5 text-zinc-900 dark:text-white" />
+              <h2 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider font-mono">
                 Pothole Diagnostics & Accountable Tender
               </h2>
             </div>
-            <span className="text-[11px] font-mono bg-zinc-900 text-zinc-300 px-2.5 py-1 rounded-full border border-zinc-800">
+            <span className="text-[11px] font-mono bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 px-2.5 py-1 rounded-full border border-zinc-200 dark:border-zinc-800">
               ID: {analysisReport.id}
             </span>
           </div>
@@ -885,59 +885,59 @@ export default function MobileRoadCapture() {
           {/* 1. Computer Vision Pothole Metrics */}
           {diagnostics && (
             <div className="space-y-3">
-              <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider">
+              <div className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">
                 1. AI Pothole Detection Analysis
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center font-mono">
-                <div className="bg-black p-3.5 rounded-2xl border border-zinc-800">
+                <div className="bg-zinc-50 dark:bg-black p-3.5 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                   <div className="text-[10px] text-zinc-500 uppercase">Defects Detected</div>
-                  <div className="text-base font-extrabold text-white mt-0.5">
+                  <div className="text-base font-extrabold text-zinc-900 dark:text-white mt-0.5">
                     {diagnostics.potholeCount} Pothole{diagnostics.potholeCount > 1 ? 's' : ''}
                   </div>
                 </div>
 
-                <div className="bg-black p-3.5 rounded-2xl border border-zinc-800">
+                <div className="bg-zinc-50 dark:bg-black p-3.5 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                   <div className="text-[10px] text-zinc-500 uppercase">Measured Depth</div>
-                  <div className="text-base font-extrabold text-white mt-0.5">
+                  <div className="text-base font-extrabold text-zinc-900 dark:text-white mt-0.5">
                     {analysisReport.defectDepthCm} cm
                   </div>
                 </div>
 
-                <div className="bg-black p-3.5 rounded-2xl border border-zinc-800">
+                <div className="bg-zinc-50 dark:bg-black p-3.5 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                   <div className="text-[10px] text-zinc-500 uppercase">Pavement Index (PCI)</div>
-                  <div className="text-base font-extrabold text-white mt-0.5">
+                  <div className="text-base font-extrabold text-zinc-900 dark:text-white mt-0.5">
                     {diagnostics.pciScore} / 100
                   </div>
-                  <div className="text-[9px] text-zinc-400">{diagnostics.pciRating}</div>
+                  <div className="text-[9px] text-zinc-500 dark:text-zinc-400">{diagnostics.pciRating}</div>
                 </div>
 
-                <div className="bg-black p-3.5 rounded-2xl border border-zinc-800">
+                <div className="bg-zinc-50 dark:bg-black p-3.5 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                   <div className="text-[10px] text-zinc-500 uppercase">Severity Level</div>
-                  <div className="text-sm font-extrabold text-white mt-0.5">
+                  <div className="text-sm font-extrabold text-zinc-900 dark:text-white mt-0.5">
                     {analysisReport.priorityAssessment.level}
                   </div>
-                  <div className="text-[9px] text-zinc-400">SLA: {analysisReport.priorityAssessment.slaHours}h</div>
+                  <div className="text-[9px] text-zinc-500 dark:text-zinc-400">SLA: {analysisReport.priorityAssessment.slaHours}h</div>
                 </div>
               </div>
 
-              <div className="p-3.5 bg-black rounded-2xl border border-zinc-800 text-xs text-zinc-300 font-mono">
-                <span className="text-white font-bold">Hazard Assessment: </span>
-                <span className="text-zinc-400">{diagnostics.damageRisk}</span>
+              <div className="p-3.5 bg-zinc-50 dark:bg-black rounded-2xl border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
+                <span className="text-zinc-900 dark:text-white font-bold">Hazard Assessment: </span>
+                <span className="text-zinc-600 dark:text-zinc-400">{diagnostics.damageRisk}</span>
               </div>
             </div>
           )}
 
           {/* 2. Geocoded Location */}
           {geocoded && (
-            <div className="space-y-2 border-t border-zinc-800 pt-4 font-mono">
-              <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-zinc-300" /> 2. Ground Location Determined
+            <div className="space-y-2 border-t border-zinc-200 dark:border-zinc-800 pt-4 font-mono">
+              <div className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-zinc-500 dark:text-zinc-300" /> 2. Ground Location Determined
               </div>
 
-              <div className="bg-black p-4 rounded-2xl border border-zinc-800 space-y-1">
-                <div className="text-sm font-bold text-white">{geocoded.roadName}</div>
-                <div className="text-xs text-zinc-400">
+              <div className="bg-zinc-50 dark:bg-black p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-1">
+                <div className="text-sm font-bold text-zinc-900 dark:text-white">{geocoded.roadName}</div>
+                <div className="text-xs text-zinc-600 dark:text-zinc-400">
                   {geocoded.locality} • {geocoded.ward} • {geocoded.city}, {geocoded.state}
                 </div>
                 <div className="text-[11px] text-zinc-500 pt-1">
@@ -949,59 +949,59 @@ export default function MobileRoadCapture() {
 
           {/* 3. Accountable Road Tender & Contractor from Database or eTender Crawler */}
           {tender ? (
-            <div className="space-y-4 border-t border-zinc-800 pt-4">
+            <div className="space-y-4 border-t border-zinc-200 dark:border-zinc-800 pt-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <Building2 className="w-4 h-4 text-white" /> 3. Responsible Tender & Contractor
+                <div className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Building2 className="w-4 h-4 text-zinc-900 dark:text-white" /> 3. Responsible Tender & Contractor
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded-full border bg-zinc-900 text-zinc-300 border-zinc-800 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded-full border bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-800 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                     {analysisReport?.matchResult?.dataSource === 'ETENDER_CRAWLER'
                       ? 'Live eTender Portal'
                       : 'Database Match'}
                   </span>
-                  <span className="px-3 py-1 text-xs font-mono font-bold rounded-full bg-zinc-900 text-zinc-200 border border-zinc-800">
+                  <span className="px-3 py-1 text-xs font-mono font-bold rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800">
                     Complaints: {liveComplaintCount} / 3
                   </span>
                 </div>
               </div>
 
-              <div className="bg-black p-5 rounded-2xl border border-zinc-800 space-y-4">
+              <div className="bg-zinc-50 dark:bg-black p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
                 {/* Contractor Name */}
                 <div>
                   <div className="text-[10px] text-zinc-500 font-mono uppercase">Assigned Contractor Company</div>
-                  <div className="text-lg font-extrabold text-white mt-0.5">
+                  <div className="text-lg font-extrabold text-zinc-900 dark:text-white mt-0.5">
                     {tender.contractor_name}
                   </div>
-                  <div className="text-xs text-zinc-400 mt-1">
-                    Authority: <strong className="text-zinc-200">{tender.organisation}</strong> • Tender ID: <span className="font-mono text-zinc-300">{tender.tender_id}</span>
+                  <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">
+                    Authority: <strong className="text-zinc-800 dark:text-zinc-200">{tender.organisation}</strong> • Tender ID: <span className="font-mono text-zinc-700 dark:text-zinc-300">{tender.tender_id}</span>
                   </div>
                 </div>
 
                 {/* Tender Work Title */}
-                <div className="p-3 bg-zinc-900/60 rounded-xl border border-zinc-800 text-xs">
+                <div className="p-3 bg-zinc-100 dark:bg-zinc-900/60 rounded-xl border border-zinc-200 dark:border-zinc-800 text-xs">
                   <span className="text-zinc-500 font-mono text-[10px] block uppercase">Tender Work Scope</span>
-                  <div className="text-zinc-200 font-medium mt-0.5">{tender.title}</div>
+                  <div className="text-zinc-800 dark:text-zinc-200 font-medium mt-0.5">{tender.title}</div>
                 </div>
 
                 {/* Budget & DLP */}
                 <div className="grid grid-cols-2 gap-3 text-xs font-mono pt-1">
                   <div>
                     <div className="text-[10px] text-zinc-500 uppercase">Sanctioned Budget</div>
-                    <div className="text-sm font-bold text-white mt-0.5">
+                    <div className="text-sm font-bold text-zinc-900 dark:text-white mt-0.5">
                       ₹{(tender.budget_inr / 100000).toFixed(2)} Lakhs
                     </div>
                   </div>
                   <div>
                     <div className="text-[10px] text-zinc-500 uppercase">Defect Liability (DLP)</div>
-                    <div className="text-xs font-bold text-emerald-400 mt-1">
+                    <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400 mt-1">
                       Active Legal Liability
                     </div>
                   </div>
                 </div>
 
-                <div className="text-[11px] text-zinc-400 font-mono leading-relaxed border-t border-zinc-900 pt-3">
+                <div className="text-[11px] text-zinc-600 dark:text-zinc-400 font-mono leading-relaxed border-t border-zinc-200 dark:border-zinc-900 pt-3">
                   <strong>Contractor Responsibility:</strong> Under UP PWD Clause 14.2 (Defect Liability Period), contractor <em>{tender.contractor_name}</em> is legally obligated to rectify potholes on this stretch at zero cost to the public.
                 </div>
               </div>
@@ -1009,34 +1009,34 @@ export default function MobileRoadCapture() {
               {/* 4. Lodge a Complaint Section */}
               <div className="space-y-4 pt-2">
                 <div className="flex items-center justify-between">
-                  <div className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-1.5">
-                    <Send className="w-3.5 h-3.5 text-white" />
+                  <div className="text-xs font-mono font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider flex items-center gap-1.5">
+                    <Send className="w-3.5 h-3.5 text-zinc-900 dark:text-white" />
                     <span>4. Lodge Official Citizen Grievance</span>
                   </div>
-                  <span className="text-[10px] font-mono text-zinc-400">
+                  <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400">
                     Threshold: 3 Complaints = Escalation
                   </span>
                 </div>
 
                 {/* Complaint Progress Meter */}
-                <div className="p-3.5 bg-black rounded-2xl border border-zinc-800 space-y-2">
+                <div className="p-3.5 bg-zinc-50 dark:bg-black rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-2">
                   <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-zinc-400">Escalation Progress:</span>
-                    <span className="font-bold text-white">
+                    <span className="text-zinc-600 dark:text-zinc-400">Escalation Progress:</span>
+                    <span className="font-bold text-zinc-900 dark:text-white">
                       {liveComplaintCount} / 3 Registered
                     </span>
                   </div>
-                  <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden border border-zinc-800">
+                  <div className="w-full bg-zinc-200 dark:bg-zinc-900 rounded-full h-2 overflow-hidden border border-zinc-300 dark:border-zinc-800">
                     <div
                       className={`h-full transition-all duration-500 rounded-full ${
-                        liveComplaintCount >= 3 ? 'bg-rose-500 w-full' : liveComplaintCount === 2 ? 'bg-amber-400 w-2/3' : 'bg-white w-1/3'
+                        liveComplaintCount >= 3 ? 'bg-rose-500 w-full' : liveComplaintCount === 2 ? 'bg-amber-400 w-2/3' : 'bg-zinc-900 dark:bg-white w-1/3'
                       }`}
                     />
                   </div>
                   <div className="text-[10px] font-mono text-zinc-500 flex justify-between">
                     <span>1: Logged</span>
                     <span>2: Warning</span>
-                    <span className={liveComplaintCount >= 3 ? 'text-rose-400 font-bold' : ''}>3: Vigilance Notice</span>
+                    <span className={liveComplaintCount >= 3 ? 'text-rose-500 dark:text-rose-400 font-bold' : ''}>3: Vigilance Notice</span>
                   </div>
                 </div>
 
@@ -1061,7 +1061,7 @@ export default function MobileRoadCapture() {
                             setCitizenRemark(`${current}, ${hazard}`);
                           }
                         }}
-                        className="text-[11px] font-mono bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white px-2.5 py-1 rounded-lg border border-zinc-800 transition-all cursor-pointer"
+                        className="text-[11px] font-mono bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white px-2.5 py-1 rounded-lg border border-zinc-200 dark:border-zinc-800 transition-all cursor-pointer"
                       >
                         + {hazard}
                       </button>
@@ -1079,7 +1079,7 @@ export default function MobileRoadCapture() {
                       onChange={(e) => setCitizenRemark(e.target.value)}
                       placeholder="e.g. Dangerous pothole near sector turn causing severe vehicle damage..."
                       rows={2}
-                      className="w-full bg-black border border-zinc-800 rounded-2xl p-3 text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-white font-mono"
+                      className="w-full bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-2xl p-3 text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-zinc-900 dark:focus:border-white font-mono"
                     />
                   </div>
 
@@ -1090,23 +1090,23 @@ export default function MobileRoadCapture() {
                         value={citizenContact}
                         onChange={(e) => setCitizenContact(e.target.value)}
                         placeholder="Mobile for status SMS (optional)"
-                        className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-3 text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-white font-mono"
+                        className="w-full bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-3 text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-zinc-900 dark:focus:border-white font-mono"
                       />
                     </div>
 
                     <button
                       type="submit"
                       disabled={isLODGINGComplaint}
-                      className="w-full bg-white hover:bg-zinc-200 text-black font-extrabold text-xs py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50 active:scale-[0.98]"
+                      className="w-full bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-black font-extrabold text-xs py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50 active:scale-[0.98]"
                     >
                       {isLODGINGComplaint ? (
                         <>
-                          <RefreshCw className="w-4 h-4 animate-spin text-black" />
+                          <RefreshCw className="w-4 h-4 animate-spin text-inherit" />
                           <span>Submitting Official Grievance...</span>
                         </>
                       ) : (
                         <>
-                          <Send className="w-4 h-4 text-black" />
+                          <Send className="w-4 h-4 text-inherit" />
                           <span>Submit Official Complaint</span>
                         </>
                       )}
@@ -1116,23 +1116,23 @@ export default function MobileRoadCapture() {
 
                 {/* Complaint Notice / Escalation Banner */}
                 {complaintNotice && (
-                  <div className="p-4 rounded-2xl border border-zinc-700 bg-zinc-900 text-zinc-100 text-xs font-mono space-y-3 animate-in fade-in">
-                    <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
-                      <span className="flex items-center gap-1.5 font-bold text-white">
-                        <CheckCircle2 className="w-4 h-4 text-white" />
+                  <div className="p-4 rounded-2xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-xs font-mono space-y-3 animate-in fade-in">
+                    <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
+                      <span className="flex items-center gap-1.5 font-bold text-zinc-900 dark:text-white">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-white" />
                         <span>Grievance Registered</span>
                       </span>
-                      <span className="text-[10px] text-zinc-400">
+                      <span className="text-[10px] text-zinc-500 dark:text-zinc-400">
                         REF: UP-PWD-{Date.now().toString().slice(-5)}
                       </span>
                     </div>
 
-                    <div className="text-zinc-300 leading-relaxed text-[11px]">{complaintNotice}</div>
+                    <div className="text-zinc-700 dark:text-zinc-300 leading-relaxed text-[11px]">{complaintNotice}</div>
 
                     <div className="flex flex-col sm:flex-row gap-2 pt-1">
                       <Link
                         href={`/tender-complaint?tenderId=${encodeURIComponent(tender.tender_id)}`}
-                        className="flex-1 py-2 px-3 bg-zinc-950 hover:bg-black text-zinc-200 border border-zinc-800 rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                        className="flex-1 py-2 px-3 bg-white hover:bg-zinc-50 dark:bg-zinc-950 dark:hover:bg-black text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800 rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-2xs"
                       >
                         <span>Print Legal Notice</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -1141,7 +1141,7 @@ export default function MobileRoadCapture() {
                       {isEscalated && (
                         <Link
                           href="/escalated"
-                          className="flex-1 py-2 px-3 bg-white text-black rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                          className="flex-1 py-2 px-3 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:text-black rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm"
                         >
                           <span>View Escalation Board</span>
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -1153,10 +1153,10 @@ export default function MobileRoadCapture() {
               </div>
             </div>
           ) : (
-            <div className="p-5 bg-black rounded-2xl border border-zinc-800 text-center space-y-2">
+            <div className="p-5 bg-zinc-50 dark:bg-black rounded-2xl border border-zinc-200 dark:border-zinc-800 text-center space-y-2">
               <AlertCircle className="w-7 h-7 text-zinc-400 mx-auto" />
-              <div className="text-xs font-bold text-white font-mono">No Matching Active Road Tender Found</div>
-              <div className="text-xs text-zinc-400">{analysisReport.matchResult.matchReason}</div>
+              <div className="text-xs font-bold text-zinc-900 dark:text-white font-mono">No Matching Active Road Tender Found</div>
+              <div className="text-xs text-zinc-600 dark:text-zinc-400">{analysisReport.matchResult.matchReason}</div>
             </div>
           )}
         </div>

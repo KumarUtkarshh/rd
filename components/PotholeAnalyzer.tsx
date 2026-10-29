@@ -385,14 +385,14 @@ export default function PotholeAnalyzer() {
 
       {/* Output Result Card */}
       {result && (
-        <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 shadow-2xl space-y-6 animate-in fade-in duration-200">
-          <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
-            <div className="flex items-center gap-2 text-white font-bold text-sm">
-              <Sparkles className="w-4 h-4 text-white" />
+        <div className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm dark:shadow-2xl space-y-6 animate-in fade-in duration-200 transition-colors">
+          <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
+            <div className="flex items-center gap-2 text-zinc-900 dark:text-white font-bold text-sm">
+              <Sparkles className="w-4 h-4 text-zinc-900 dark:text-white" />
               <span>AI Detection & Tender Legal Attribution</span>
             </div>
             {result.matchResult && (
-              <span className="text-xs font-mono text-zinc-300 bg-black px-3 py-1 rounded-full border border-zinc-800">
+              <span className="text-xs font-mono text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-black px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800">
                 Confidence: {result.matchResult.confidenceScore}% • {result.matchResult.distanceMeters}m away
               </span>
             )}
@@ -402,58 +402,58 @@ export default function PotholeAnalyzer() {
           {diagnostics && (
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <Sliders className="w-4 h-4 text-zinc-300" /> Computer Vision Inspection Summary
+                <div className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Sliders className="w-4 h-4 text-zinc-500 dark:text-zinc-300" /> Computer Vision Inspection Summary
                 </div>
                 {previewUrl && (
                   <button
                     onClick={() => setShowAiOverlay(!showAiOverlay)}
-                    className="text-[11px] font-mono text-zinc-300 flex items-center gap-1 cursor-pointer bg-zinc-900 px-2.5 py-1 rounded-full border border-zinc-800"
+                    className="text-[11px] font-mono text-zinc-700 dark:text-zinc-300 flex items-center gap-1 cursor-pointer bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 px-2.5 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 transition-colors"
                   >
-                    {showAiOverlay ? <Eye className="w-3.5 h-3.5 text-emerald-400" /> : <EyeOff className="w-3.5 h-3.5" />}
+                    {showAiOverlay ? <Eye className="w-3.5 h-3.5 text-emerald-500" /> : <EyeOff className="w-3.5 h-3.5" />}
                     <span>{showAiOverlay ? 'Bounding Boxes: ON' : 'Bounding Boxes: OFF'}</span>
                   </button>
                 )}
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center font-mono">
-                <div className="bg-black p-3 rounded-2xl border border-zinc-800">
+                <div className="bg-zinc-50 dark:bg-black p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                   <div className="text-[10px] text-zinc-500 uppercase">Potholes Identified</div>
-                  <div className="text-base font-extrabold text-white mt-0.5">
+                  <div className="text-base font-extrabold text-zinc-900 dark:text-white mt-0.5">
                     {diagnostics.potholeCount} Defect{diagnostics.potholeCount > 1 ? 's' : ''}
                   </div>
                 </div>
 
-                <div className="bg-black p-3 rounded-2xl border border-zinc-800">
+                <div className="bg-zinc-50 dark:bg-black p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                   <div className="text-[10px] text-zinc-500 uppercase">Measured Dimensions</div>
-                  <div className="text-xs font-bold text-white mt-1">
+                  <div className="text-xs font-bold text-zinc-900 dark:text-white mt-1">
                     {result.defectDepthCm}cm × {result.defectWidthCm}cm
                   </div>
                 </div>
 
-                <div className="bg-black p-3 rounded-2xl border border-zinc-800">
+                <div className="bg-zinc-50 dark:bg-black p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                   <div className="text-[10px] text-zinc-500 uppercase">ASTM D6433 PCI</div>
-                  <div className="text-base font-extrabold text-white mt-0.5">
+                  <div className="text-base font-extrabold text-zinc-900 dark:text-white mt-0.5">
                     {diagnostics.pciScore} / 100
                   </div>
-                  <div className="text-[9px] text-zinc-400">{diagnostics.pciRating}</div>
+                  <div className="text-[9px] text-zinc-500 dark:text-zinc-400">{diagnostics.pciRating}</div>
                 </div>
 
-                <div className="bg-black p-3 rounded-2xl border border-zinc-800">
+                <div className="bg-zinc-50 dark:bg-black p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                   <div className="text-[10px] text-zinc-500 uppercase">Hazard Severity</div>
-                  <div className="text-sm font-extrabold text-white mt-0.5">
+                  <div className="text-sm font-extrabold text-zinc-900 dark:text-white mt-0.5">
                     {result.priorityAssessment.level}
                   </div>
-                  <div className="text-[9px] text-zinc-400">SLA: {result.priorityAssessment.slaHours}h</div>
+                  <div className="text-[9px] text-zinc-500 dark:text-zinc-400">SLA: {result.priorityAssessment.slaHours}h</div>
                 </div>
               </div>
 
-              <div className="p-3 bg-black rounded-2xl border border-zinc-800 text-xs text-zinc-300 font-mono space-y-1">
-                <div className="text-white font-bold flex items-center gap-1.5">
-                  <ShieldAlert className="w-3.5 h-3.5 text-zinc-300" />
+              <div className="p-3 bg-zinc-50 dark:bg-black rounded-2xl border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-700 dark:text-zinc-300 font-mono space-y-1">
+                <div className="text-zinc-900 dark:text-white font-bold flex items-center gap-1.5">
+                  <ShieldAlert className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-300" />
                   <span>Structural Road Assessment:</span>
                 </div>
-                <div className="text-zinc-400 text-[11px] leading-relaxed">
+                <div className="text-zinc-600 dark:text-zinc-400 text-[11px] leading-relaxed">
                   {diagnostics.damageRisk} (Estimated Asphalt Repair Volume: ~{diagnostics.estimatedAsphaltRepairVolumeM3} m³)
                 </div>
               </div>
@@ -462,14 +462,14 @@ export default function PotholeAnalyzer() {
 
           {/* Reverse Geocoded Location */}
           {geocoded && (
-            <div className="space-y-2 border-t border-zinc-800 pt-4">
-              <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-zinc-300" /> Reverse Geocoded Ground Location
+            <div className="space-y-2 border-t border-zinc-200 dark:border-zinc-800 pt-4">
+              <div className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-zinc-500 dark:text-zinc-300" /> Reverse Geocoded Ground Location
               </div>
 
-              <div className="bg-black p-4 rounded-2xl border border-zinc-800 space-y-1.5">
-                <div className="text-sm font-bold text-white">{geocoded.roadName}</div>
-                <div className="text-xs text-zinc-400 font-mono flex flex-wrap gap-x-2">
+              <div className="bg-zinc-50 dark:bg-black p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-1.5">
+                <div className="text-sm font-bold text-zinc-900 dark:text-white">{geocoded.roadName}</div>
+                <div className="text-xs text-zinc-600 dark:text-zinc-400 font-mono flex flex-wrap gap-x-2">
                   <span>{geocoded.locality}</span>
                   <span>•</span>
                   <span>{geocoded.ward}</span>
@@ -485,29 +485,29 @@ export default function PotholeAnalyzer() {
 
           {/* Accountable Contractor & Tender Match */}
           {tender ? (
-            <div className="space-y-6 border-t border-zinc-800 pt-4">
+            <div className="space-y-6 border-t border-zinc-200 dark:border-zinc-800 pt-4">
               <div>
-                <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                  <FileText className="w-4 h-4 text-zinc-300" /> Assigned Government Road Tender
+                <div className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <FileText className="w-4 h-4 text-zinc-500 dark:text-zinc-300" /> Assigned Government Road Tender
                 </div>
-                <h3 className="text-base font-bold text-white leading-snug">
+                <h3 className="text-base font-bold text-zinc-900 dark:text-white leading-snug">
                   {tender.title}
                 </h3>
-                <div className="text-xs font-mono text-zinc-400 mt-1 flex flex-wrap items-center gap-2">
-                  <span className="text-zinc-200 font-semibold">{tender.organisation}</span>
+                <div className="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-1 flex flex-wrap items-center gap-2">
+                  <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{tender.organisation}</span>
                   <span>•</span>
                   <span>Tender ID: {tender.tender_id}</span>
                 </div>
               </div>
 
               {/* Accountable Contractor Liability Box */}
-              <div className="bg-black border border-zinc-800 rounded-2xl p-5 space-y-4">
+              <div className="bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <UserCheck className="w-4 h-4 text-white" /> Accountable Contractor Liability
+                  <div className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <UserCheck className="w-4 h-4 text-zinc-900 dark:text-white" /> Accountable Contractor Liability
                   </div>
 
-                  <span className="px-3 py-1 text-xs font-mono font-bold rounded-full bg-zinc-900 text-zinc-200 border border-zinc-800">
+                  <span className="px-3 py-1 text-xs font-mono font-bold rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800">
                     Complaints: {liveComplaintCount} / 3
                   </span>
                 </div>
@@ -515,21 +515,21 @@ export default function PotholeAnalyzer() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
                     <div className="text-zinc-500 font-mono">Assigned Contractor</div>
-                    <div className="text-base font-extrabold text-white mt-0.5">
+                    <div className="text-base font-extrabold text-zinc-900 dark:text-white mt-0.5">
                       {tender.contractor_name}
                     </div>
                   </div>
 
                   <div>
                     <div className="text-zinc-500 font-mono">Budget & Warranty Status</div>
-                    <div className="text-sm font-bold text-zinc-200 mt-0.5">
+                    <div className="text-sm font-bold text-zinc-800 dark:text-zinc-200 mt-0.5">
                       ₹{(tender.budget_inr / 100000).toFixed(2)} Lakhs
-                      <span className="text-zinc-400 font-normal ml-2 font-mono">(DLP Active)</span>
+                      <span className="text-zinc-500 dark:text-zinc-400 font-normal ml-2 font-mono">(DLP Active)</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3 bg-zinc-900/60 rounded-xl border border-zinc-800 text-[11px] text-zinc-300 leading-relaxed font-mono">
+                <div className="p-3 bg-zinc-100 dark:bg-zinc-900/60 rounded-xl border border-zinc-200 dark:border-zinc-800 text-[11px] text-zinc-700 dark:text-zinc-300 leading-relaxed font-mono">
                   <strong>Contractor Liability Clause:</strong> Contractor is legally accountable for asphalt restoration under the Defect Liability Period (DLP) established by {tender.organisation}.
                 </div>
               </div>
@@ -538,38 +538,38 @@ export default function PotholeAnalyzer() {
               <div className="space-y-3 pt-2">
                 <Link
                   href={`/tender-complaint?tenderId=${encodeURIComponent(tender.tender_id)}`}
-                  className="w-full bg-white hover:bg-zinc-200 text-black font-extrabold text-sm py-3.5 px-6 rounded-2xl shadow-md flex items-center justify-center gap-2 transition-all"
+                  className="w-full bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-black font-extrabold text-sm py-3.5 px-6 rounded-2xl shadow-md flex items-center justify-center gap-2 transition-all"
                 >
                   <span>Open Dedicated Contractor Grievance Notice</span>
-                  <ArrowRight className="w-4 h-4 text-black" />
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
 
                 <button
                   onClick={handleRegisterComplaint}
                   disabled={isRegisteringComplaint}
-                  className="w-full bg-zinc-900 hover:bg-zinc-800 text-zinc-200 font-bold text-sm py-3 px-6 rounded-2xl border border-zinc-800 flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
+                  className="w-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-sm py-3 px-6 rounded-2xl border border-zinc-300 dark:border-zinc-800 flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
                 >
                   {isRegisteringComplaint ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 border-2 border-zinc-400 border-t-zinc-800 dark:border-white/30 dark:border-t-white rounded-full animate-spin"></div>
                       <span>Registering Grievance...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-4 h-4 text-zinc-300" />
+                      <Send className="w-4 h-4 text-zinc-600 dark:text-zinc-300" />
                       <span>Lodge Direct Citizen Grievance</span>
                     </>
                   )}
                 </button>
 
                 {complaintSuccessMsg && (
-                  <div className="p-4 rounded-2xl border border-zinc-700 bg-zinc-900 text-zinc-200 text-xs font-mono space-y-2 animate-in fade-in">
+                  <div className="p-4 rounded-2xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200 text-xs font-mono space-y-2 animate-in fade-in">
                     <div>{complaintSuccessMsg}</div>
                     {isEscalated && (
                       <div>
                         <Link
                           href="/escalated"
-                          className="inline-flex items-center gap-1 text-xs font-bold text-white underline"
+                          className="inline-flex items-center gap-1 text-xs font-bold text-zinc-900 dark:text-white underline"
                         >
                           View High Priority Escalation Board <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
@@ -582,8 +582,8 @@ export default function PotholeAnalyzer() {
           ) : (
             <div className="text-center py-6 space-y-2">
               <AlertCircle className="w-8 h-8 text-zinc-400 mx-auto" />
-              <div className="text-sm font-bold text-white">No Matching Active Road Tender</div>
-              <div className="text-xs text-zinc-400">{result.matchResult?.matchReason}</div>
+              <div className="text-sm font-bold text-zinc-900 dark:text-white">No Matching Active Road Tender</div>
+              <div className="text-xs text-zinc-500 dark:text-zinc-400">{result.matchResult?.matchReason}</div>
             </div>
           )}
         </div>

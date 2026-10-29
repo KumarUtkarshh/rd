@@ -6,7 +6,7 @@ import MobileRoadCapture from '@/components/MobileRoadCapture';
 
 export default function ScanPage() {
   return (
-    <div className="min-h-screen bg-black text-zinc-100 flex flex-col font-sans selection:bg-white selection:text-black">
+    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-150">
       {/* Responsive Navbar */}
       <Navbar />
 
@@ -16,7 +16,7 @@ export default function ScanPage() {
       </main>
 
       {/* Minimalist Footer */}
-      <footer className="border-t border-zinc-900 bg-black py-4 text-center text-xs text-zinc-500 font-mono tracking-tight">
+      <footer className="border-t border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black py-4 text-center text-xs text-zinc-500 font-mono tracking-tight transition-colors duration-150">
         RD SYSTEM • ROAD DEFECT & CONTRACTOR ACCOUNTABILITY PLATFORM
       </footer>
     </div>

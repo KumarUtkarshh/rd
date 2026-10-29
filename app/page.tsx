@@ -7,9 +7,7 @@ import {
   ShieldAlert,
   ChevronDown,
   Cpu,
-  Layers,
-  Sparkles,
-  ExternalLink
+  Layers
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 
@@ -74,7 +72,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white font-[family-name:var(--font-geist-sans),sans-serif] selection:bg-white selection:text-black antialiased max-w-full overflow-x-clip">
+    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-white font-[family-name:var(--font-geist-sans),sans-serif] selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-black antialiased max-w-full overflow-x-clip transition-colors duration-150">
 
       {/* ========================================================================= */}
       {/* 1. UNIFIED RESPONSIVE NAVBAR                                              */}
@@ -87,26 +85,26 @@ export default function Home() {
       <section className="relative flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24 text-center overflow-hidden min-h-[calc(100vh-5rem)]">
 
         {/* Ambient Radial Glow (Safely clipped to container) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] lg:w-[900px] h-[300px] sm:h-[450px] bg-gradient-to-tr from-zinc-800/15 via-zinc-800/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] lg:w-[900px] h-[300px] sm:h-[450px] bg-gradient-to-tr from-blue-500/10 via-zinc-200/50 to-transparent dark:from-zinc-800/15 dark:via-zinc-800/30 dark:to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
         <div className="w-full max-w-4xl lg:max-w-5xl mx-auto space-y-6 sm:space-y-8">
 
           {/* Top Pill Tag */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-[10px] sm:text-xs font-mono text-zinc-400 tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[10px] sm:text-xs font-mono text-zinc-600 dark:text-zinc-400 tracking-wider shadow-sm">
             <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-blue-500 animate-pulse"></span>
             <span className="truncate">CIVIC INFRASTRUCTURE INTELLIGENCE</span>
           </div>
 
           {/* Tagline: Bold, Responsive Typography */}
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-zinc-100 leading-[1.1] break-words">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.1] break-words">
             Spot every pothole. <br className="hidden sm:inline" />
-            <span className="font-serif italic font-light text-zinc-400 block sm:inline mt-1 sm:mt-0">
+            <span className="font-serif italic font-light text-zinc-500 dark:text-zinc-400 block sm:inline mt-1 sm:mt-0">
               Enforce real repairs.
             </span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-zinc-400 max-w-xl sm:max-w-2xl mx-auto font-normal leading-relaxed px-2">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-zinc-600 dark:text-zinc-400 max-w-xl sm:max-w-2xl mx-auto font-normal leading-relaxed px-2">
             Citizen-powered defect detection matched directly with official road maintenance contracts.
           </p>
 
@@ -114,7 +112,7 @@ export default function Home() {
           <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto w-full">
             <Link
               href="/scan"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-full bg-white text-black font-semibold text-xs sm:text-sm hover:bg-zinc-200 transition-all active:scale-95 shadow-[0_0_25px_rgba(255,255,255,0.12)]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-full bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 font-semibold text-xs sm:text-sm transition-all active:scale-95 shadow-md dark:shadow-[0_0_25px_rgba(255,255,255,0.12)]"
             >
               <span>Scan Road Defect</span>
               <ArrowRight className="w-4 h-4" />
@@ -122,9 +120,9 @@ export default function Home() {
 
             <Link
               href="/escalated"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-full bg-zinc-900 hover:bg-zinc-850 text-zinc-200 font-semibold text-xs sm:text-sm border border-zinc-800 transition-all active:scale-95"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-full bg-white hover:bg-zinc-100 text-zinc-800 border-zinc-300 dark:bg-zinc-900 dark:hover:bg-zinc-850 dark:text-zinc-200 font-semibold text-xs sm:text-sm border dark:border-zinc-800 transition-all active:scale-95 shadow-sm"
             >
-              <ShieldAlert className="w-4 h-4 text-zinc-400" />
+              <ShieldAlert className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
               <span>Escalation Board</span>
             </Link>
           </div>
@@ -135,17 +133,17 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 3. PROCEDURE & GUIDE (Responsive Timeline for All Screen Sizes)            */}
       {/* ========================================================================= */}
-      <section id="procedure" className="py-16 sm:py-24 lg:py-32 border-t border-zinc-900 bg-black overflow-hidden">
+      <section id="procedure" className="py-16 sm:py-24 lg:py-32 border-t border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black overflow-hidden transition-colors duration-150">
         <div className="max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
 
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-20 space-y-2 sm:space-y-3">
             <span className="text-[11px] sm:text-xs font-mono text-zinc-500 uppercase tracking-widest block">
               Procedure & Guide
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-semibold text-zinc-100 tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight">
               How It Works
             </h2>
-            <p className="text-xs sm:text-sm md:text-base text-zinc-400">
+            <p className="text-xs sm:text-sm md:text-base text-zinc-600 dark:text-zinc-400">
               Four clear steps from road defect snapshot to contractor legal escalation notice.
             </p>
           </div>
@@ -153,7 +151,7 @@ export default function Home() {
           {/* Responsive Stepper / Timeline */}
           <div className="relative">
             {/* Center connecting line (Desktop only) */}
-            <div className="hidden md:block absolute left-1/2 top-8 bottom-8 w-px bg-zinc-800/80 -translate-x-1/2" />
+            <div className="hidden md:block absolute left-1/2 top-8 bottom-8 w-px bg-zinc-200 dark:bg-zinc-800/80 -translate-x-1/2" />
 
             <div className="space-y-6 sm:space-y-10 lg:space-y-14">
               {steps.map((item, idx) => {
@@ -171,36 +169,36 @@ export default function Home() {
                         onClick={() => setActiveStep(idx)}
                         className={`p-5 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl border transition-all cursor-pointer ${
                           activeStep === idx
-                            ? 'bg-zinc-900/90 border-zinc-700 shadow-[0_0_30px_rgba(255,255,255,0.03)]'
-                            : 'bg-zinc-950/60 border-zinc-900 hover:border-zinc-800'
+                            ? 'bg-zinc-100 dark:bg-zinc-900/90 border-zinc-300 dark:border-zinc-700 shadow-md dark:shadow-[0_0_30px_rgba(255,255,255,0.03)]'
+                            : 'bg-zinc-50 dark:bg-zinc-950/60 border-zinc-200 dark:border-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-800'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-3">
                           <div className="flex items-center gap-2">
                             {/* Mobile inline badge */}
-                            <span className="md:hidden flex items-center justify-center w-6 h-6 rounded-lg bg-zinc-800 border border-zinc-700 text-xs font-mono font-bold text-white">
+                            <span className="md:hidden flex items-center justify-center w-6 h-6 rounded-lg bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-xs font-mono font-bold text-zinc-900 dark:text-white">
                               {item.step}
                             </span>
-                            <span className="text-[11px] sm:text-xs font-mono text-blue-400 font-medium">
+                            <span className="text-[11px] sm:text-xs font-mono text-blue-600 dark:text-blue-400 font-medium">
                               {item.tag}
                             </span>
                           </div>
-                          <span className="text-[10px] sm:text-xs font-mono text-zinc-500 bg-zinc-900/90 px-2.5 py-0.5 rounded-full border border-zinc-800">
+                          <span className="text-[10px] sm:text-xs font-mono text-zinc-600 dark:text-zinc-500 bg-zinc-200/70 dark:bg-zinc-900/90 px-2.5 py-0.5 rounded-full border border-zinc-300 dark:border-zinc-800">
                             Phase {item.step}
                           </span>
                         </div>
 
-                        <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-zinc-100 mb-1.5">
+                        <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-1.5">
                           {item.title}
                         </h3>
-                        <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+                        <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
                           {item.description}
                         </p>
                       </div>
                     </div>
 
                     {/* Timeline Center Node (Desktop only) */}
-                    <div className="hidden md:flex relative z-10 w-11 h-11 lg:w-12 lg:h-12 rounded-2xl bg-zinc-900 border border-zinc-700 items-center justify-center font-mono text-sm font-semibold text-zinc-200 shadow-lg shrink-0">
+                    <div className="hidden md:flex relative z-10 w-11 h-11 lg:w-12 lg:h-12 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 items-center justify-center font-mono text-sm font-semibold text-zinc-800 dark:text-zinc-200 shadow-sm dark:shadow-lg shrink-0">
                       {item.step}
                     </div>
 
@@ -218,37 +216,37 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 4. BODY SECTION: FEATURES & FAQ                                           */}
       {/* ========================================================================= */}
-      <section id="features" className="py-16 sm:py-24 lg:py-32 border-t border-zinc-900 bg-zinc-950/40 overflow-hidden">
+      <section id="features" className="py-16 sm:py-24 lg:py-32 border-t border-zinc-200 dark:border-zinc-900 bg-zinc-50/70 dark:bg-zinc-950/40 overflow-hidden transition-colors duration-150">
         <div className="max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 space-y-16 sm:space-y-24">
 
           {/* Key Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-black border border-zinc-900 space-y-3.5 hover:border-zinc-800 transition-colors">
-              <div className="w-10 h-10 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-200">
+            <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-black border border-zinc-200 dark:border-zinc-900 space-y-3.5 hover:border-zinc-300 dark:hover:border-zinc-800 transition-colors shadow-sm">
+              <div className="w-10 h-10 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-zinc-800 dark:text-zinc-200">
                 <Cpu className="w-5 h-5" />
               </div>
-              <h3 className="text-base sm:text-lg font-semibold text-zinc-100">Pixel-Level Road Verification</h3>
-              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+              <h3 className="text-base sm:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Pixel-Level Road Verification</h3>
+              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
                 Inspects asphalt texture, measures defect depth and width, and screens out non-road images with high precision.
               </p>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-black border border-zinc-900 space-y-3.5 hover:border-zinc-800 transition-colors">
-              <div className="w-10 h-10 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-200">
+            <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-black border border-zinc-200 dark:border-zinc-900 space-y-3.5 hover:border-zinc-300 dark:hover:border-zinc-800 transition-colors shadow-sm">
+              <div className="w-10 h-10 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-zinc-800 dark:text-zinc-200">
                 <Layers className="w-5 h-5" />
               </div>
-              <h3 className="text-base sm:text-lg font-semibold text-zinc-100">Spatial Contract Matching</h3>
-              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+              <h3 className="text-base sm:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Spatial Contract Matching</h3>
+              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
                 Cross-references photo GPS coordinates with road maintenance contracts to locate responsible parties and budgets.
               </p>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-black border border-zinc-900 space-y-3.5 hover:border-zinc-800 transition-colors">
-              <div className="w-10 h-10 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-200">
-                <ShieldAlert className="w-5 h-5 text-rose-400" />
+            <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-black border border-zinc-200 dark:border-zinc-900 space-y-3.5 hover:border-zinc-300 dark:hover:border-zinc-800 transition-colors shadow-sm">
+              <div className="w-10 h-10 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-zinc-800 dark:text-zinc-200">
+                <ShieldAlert className="w-5 h-5 text-rose-500 dark:text-rose-400" />
               </div>
-              <h3 className="text-base sm:text-lg font-semibold text-zinc-100">3-Report Escalation Rule</h3>
-              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+              <h3 className="text-base sm:text-lg font-semibold text-zinc-900 dark:text-zinc-100">3-Report Escalation Rule</h3>
+              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
                 Collective reports on the same road trigger an official escalation notice dispatched directly to executive engineers.
               </p>
             </div>
@@ -260,7 +258,7 @@ export default function Home() {
               <span className="text-[11px] sm:text-xs font-mono text-zinc-500 uppercase tracking-widest block">
                 FAQ
               </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-zinc-100 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight">
                 Frequently Asked Questions
               </h2>
             </div>
@@ -269,25 +267,25 @@ export default function Home() {
               {faqs.map((faq, idx) => (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-zinc-900 bg-black overflow-hidden transition-all"
+                  className="rounded-2xl border border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black overflow-hidden transition-all shadow-sm"
                 >
                   <button
                     type="button"
                     onClick={() => toggleFaq(idx)}
-                    className="w-full p-4 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-zinc-950 transition-colors"
+                    className="w-full p-4 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-950 transition-colors"
                   >
-                    <span className="text-xs sm:text-sm md:text-base font-medium text-zinc-200 pr-2">
+                    <span className="text-xs sm:text-sm md:text-base font-medium text-zinc-800 dark:text-zinc-200 pr-2">
                       {faq.q}
                     </span>
                     <ChevronDown
-                      className={`w-4 h-4 text-zinc-500 transition-transform duration-200 shrink-0 ${
-                        activeFaq === idx ? 'rotate-180 text-zinc-300' : ''
+                      className={`w-4 h-4 text-zinc-400 dark:text-zinc-500 transition-transform duration-200 shrink-0 ${
+                        activeFaq === idx ? 'rotate-180 text-zinc-700 dark:text-zinc-300' : ''
                       }`}
                     />
                   </button>
 
                   {activeFaq === idx && (
-                    <div className="px-4 pb-4 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed border-t border-zinc-900/60 pt-3 sm:pt-4">
+                    <div className="px-4 pb-4 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed border-t border-zinc-100 dark:border-zinc-900/60 pt-3 sm:pt-4">
                       {faq.a}
                     </div>
                   )}
@@ -302,17 +300,17 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 5. FOOTER (Multi-Column Layout)                                           */}
       {/* ========================================================================= */}
-      <footer className="border-t border-zinc-900 bg-black py-12 sm:py-16 text-zinc-400 overflow-hidden">
+      <footer className="border-t border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black py-12 sm:py-16 text-zinc-600 dark:text-zinc-400 overflow-hidden transition-colors duration-150">
         <div className="max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 space-y-10 sm:space-y-12">
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
             {/* Col 1: Brand & Socials */}
             <div className="space-y-3.5">
               <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-lg bg-white text-black flex items-center justify-center font-bold text-xs">
+                <div className="w-7 h-7 rounded-lg bg-zinc-900 text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-xs">
                   RD
                 </div>
-                <span className="font-semibold text-sm sm:text-base text-white">
+                <span className="font-semibold text-sm sm:text-base text-zinc-900 dark:text-white">
                   RoadWatch AI
                 </span>
               </div>
@@ -326,7 +324,7 @@ export default function Home() {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-8 h-8 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center border border-zinc-800/80 transition-colors"
+                  className="w-8 h-8 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-850 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white flex items-center justify-center border border-zinc-200 dark:border-zinc-800/80 transition-colors"
                   title="Instagram"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -337,7 +335,7 @@ export default function Home() {
                   href="https://x.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-8 h-8 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center border border-zinc-800/80 transition-colors"
+                  className="w-8 h-8 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-850 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white flex items-center justify-center border border-zinc-200 dark:border-zinc-800/80 transition-colors"
                   title="X (Twitter)"
                 >
                   <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
@@ -348,7 +346,7 @@ export default function Home() {
                   href="https://github.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-8 h-8 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center border border-zinc-800/80 transition-colors"
+                  className="w-8 h-8 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-850 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white flex items-center justify-center border border-zinc-200 dark:border-zinc-800/80 transition-colors"
                   title="GitHub"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -360,31 +358,31 @@ export default function Home() {
 
             {/* Col 2: Navigation Links */}
             <div className="space-y-3">
-              <span className="text-[11px] sm:text-xs font-mono font-medium text-zinc-300 uppercase tracking-widest block">
+              <span className="text-[11px] sm:text-xs font-mono font-medium text-zinc-900 dark:text-zinc-300 uppercase tracking-widest block">
                 Platform
               </span>
-              <ul className="space-y-2 text-xs sm:text-sm text-zinc-400">
+              <ul className="space-y-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
                 <li>
-                  <Link href="/scan" className="hover:text-white transition-colors">Camera Scanner</Link>
+                  <Link href="/scan" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Camera Scanner</Link>
                 </li>
                 <li>
-                  <Link href="/escalated" className="hover:text-white transition-colors">Escalation Board</Link>
+                  <Link href="/escalated" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Escalation Board</Link>
                 </li>
                 <li>
-                  <Link href="/tender-complaint" className="hover:text-white transition-colors">Lodge Complaint</Link>
+                  <Link href="/tender-complaint" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Lodge Complaint</Link>
                 </li>
               </ul>
             </div>
 
             {/* Col 3: Team Credits */}
             <div className="space-y-3">
-              <span className="text-[11px] sm:text-xs font-mono font-medium text-zinc-300 uppercase tracking-widest block">
+              <span className="text-[11px] sm:text-xs font-mono font-medium text-zinc-900 dark:text-zinc-300 uppercase tracking-widest block">
                 Team Credits
               </span>
               <ul className="space-y-2 text-xs sm:text-sm">
                 {teamMembers.map((member, i) => (
-                  <li key={i} className="text-zinc-400">
-                    <span className="font-medium text-zinc-200">{member.name}</span>
+                  <li key={i} className="text-zinc-600 dark:text-zinc-400">
+                    <span className="font-medium text-zinc-900 dark:text-zinc-200">{member.name}</span>
                     <span className="text-zinc-500 text-[11px] block">{member.role}</span>
                   </li>
                 ))}
@@ -393,7 +391,7 @@ export default function Home() {
           </div>
 
           {/* Bottom Copyright */}
-          <div className="pt-6 sm:pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-xs font-mono text-zinc-500 text-center sm:text-left">
+          <div className="pt-6 sm:pt-8 border-t border-zinc-200 dark:border-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-xs font-mono text-zinc-500 text-center sm:text-left">
             <div>© 2026 RoadWatch AI.</div>
             <div>Built for Transparent Civic Accountability.</div>
           </div>
