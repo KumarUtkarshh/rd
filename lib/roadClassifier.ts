@@ -199,7 +199,7 @@ export function classifyRoadImageFromPixels(
   }
 
   // 2. Plain blank surface check (painted wall, paper, ceiling, laptop screen)
-  if (edgeDensity < 0.008 && meanGradient < 4.0 && cavityRatio < 0.02) {
+  if (edgeDensity < 0.003 && meanGradient < 2.0 && cavityRatio < 0.01) {
     return {
       isRoad: false,
       confidence: 15,
